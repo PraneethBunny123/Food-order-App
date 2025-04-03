@@ -3,6 +3,6 @@ export default function Button({children, textOnly, className, ...props}) {
     cssClasses += ' ' + className
 
     return (
-        <button className={cssClasses}>{children}</button>
+        <button className={cssClasses} {...props}>{children}</button>
     )
 }

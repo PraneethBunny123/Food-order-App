@@ -33,9 +33,10 @@ function cartReducer(state, action) {
             item => item.id === action.id
         )
         const existingItem = state.items[existingCartItemIndex]
+        const updatedItems = [...state.items]
 
         if(existingItem.quantity === 1) {
-            const updatedItems = [...state.items]
+
             updatedItems.splice(existingCartItemIndex, 1)
         }else {
             const updatedItem = {
@@ -68,7 +69,11 @@ export function CartContextProvider({children}) {
         removeItem
     }
 
-    return <CartContext.Provider>{children}</CartContext.Provider>
+    console.log(cartContext)
+
+    return (
+        <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
+    )
 }
 
 export default CartContext
