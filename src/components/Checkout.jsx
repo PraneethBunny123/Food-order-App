@@ -19,7 +19,7 @@ export default function Checkout() {
     const cartCtx = useContext(CartContext)
     const userProgressCtx = useContext(UserProgressContext)
 
-    const {data, isLoading: isSending, error, sendRequest} = useHttp('http://localhost:3000/orders', requestConfig)
+    const {data, isLoading: isSending, error, sendRequest, clearData} = useHttp('http://localhost:3000/orders', requestConfig)
 
     function handleClose() {
         userProgressCtx.hideCheckout()
@@ -27,6 +27,8 @@ export default function Checkout() {
 
     function handleFinish() {
         cartCtx.clearCart()
+        userProgressCtx.handleClose()
+        clearData()
     }
 
     function handleSubmit(event) {

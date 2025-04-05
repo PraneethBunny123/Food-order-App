@@ -37,11 +37,16 @@ export default function useHttp(url, config, initialData) {
 
     }, [sendRequest])
 
+    function clearData() {
+        setData(initialData)
+    }
+
     return {
         data,
         isLoading,
         error,
-        sendRequest
+        sendRequest,
+        clearData
     }
 
 }
