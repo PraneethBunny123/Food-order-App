@@ -25,6 +25,10 @@ export default function Checkout() {
         userProgressCtx.hideCheckout()
     }
 
+    function handleFinish() {
+        cartCtx.clearCart()
+    }
+
     function handleSubmit(event) {
         event.preventDefault()
 
@@ -58,12 +62,12 @@ export default function Checkout() {
 
     if(data && !error) {
         return (
-            <Modal open={userProgressCtx.progress === 'checkout'} onClose={handleClose}>
+            <Modal open={userProgressCtx.progress === 'checkout'} onClose={handleFinish}>
                 <h2>Success!</h2>
                 <p>Your order was submitted Successfully</p>
                 <p>We will get back to you with more details visa emial in few minutes</p>
                 <p className="modal-actions">
-                    <Button onClick={handleClose}>Okay</Button>
+                    <Button onClick={handleFinish}>Okay</Button>
                 </p>
             </Modal>
         )
